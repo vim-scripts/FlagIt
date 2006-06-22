@@ -1,0 +1,48 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=1580
+
+FlagIt privides a simple way to flag lines with a set of signs.
+
+Screenshot: http://sexylizard.org/images/flagit.png
+(Icons from http://tango.freedesktop.org/Tango_Desktop_Project)
+
+A configuration example is provided in the script header.
+
+Usage:
+g:Fi_Flags
+	a dictionnary which describes the flags
+	Synopsis:
+	an item: '"flagName" : ["aUrlToTheImagePath", "aText, One or two character", uniq, "additionnal options"]'
+
+	"flagName" : an uniq identifier
+	"aUrlToTheImagePath" : The path to a pixmap. The flag will be drawn as a pixmap (if GUI avaible and g:Fi_OnlyText is 0).
+	"aText" : One or two character. The flag will be drawn as a text (if GUI not avaible or g:Fi_OnlyText is 1)
+	uniq : If 1, only one instance of this flag will be drawn, else multiple instance will be allowed
+	"additionnal options" : options added to signs definition (cf. "sign define")
+
+	example:
+		let g:Fi_Flags = {"fixme" : ["/home/login/.vim/signs/fixme.png", "!!", 0, ""],
+		\ "error" : ["/home/login/.vim/signs/error.png", "XX", 1, "texthl=ErrorMsg linehl=ErrorMsg"] }
+
+g:Fi_ShowMenu
+	If 1 and Gui avaible and g:Fi_OnlyText is 0, a menu will be added to the ToolBar.
+
+g:Fi_OnlyText
+	If 1, pixmap will not be used
+
+FlagList
+	List all avaible flags
+
+FlagIt flagName [line number]
+	Add a flag. If line number is not provided, current line is uses
+	Il a flag is already presents, it will be removed
+
+UnFlag [flagName]
+	Remove all flags of type flagName
+	If flagName is not provided,  remove all flags
+
+FlagDemo
+	Just a way to draw all kind of flags (for test)
+
+TODO:
+save flags (Modelines ? session ? dedicated file ?)
+
